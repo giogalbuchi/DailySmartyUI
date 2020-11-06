@@ -11,23 +11,32 @@ body {
     justify-content: center;
 }
 
-
-.home {
-    height: 100vh;
-    width: 66vh;
-    display: grid;
-    align-content: space-around;
-    justify-items: stretch;
-    // grid-template-rows: 1fr 2fr 1fr;
-}
-
 .logo-main,
 .recent-posts {
     display: grid;
     justify-items: center;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
 
 $color-gray-one : #666666;
+$blue-one: #0079ff;
+
+
+.no-content {
+    color: $color-gray-one;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+
 
 @import './searchBar.scss';
+@import './recent-posts.scss';
+@import './post.scss';
+@import './home.scss';
+@import './results.scss';

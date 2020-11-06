@@ -18,6 +18,25 @@ class Post extends Component {
         return topics;
     }
 
+    getNameForPostLink(str) {
+        var n = str.lastIndexOf('/');
+        var link = str.substring(n + 1, str.length);
+
+        if ((n+1) == str.length) {
+            link = str.slice(0, n);
+            n = link.lastIndexOf('/');
+            link = str.substring(n + 1, str.length -1); 
+        }
+
+        if(link.includes('.html')) {
+            link = link.substring(0, link.length - 5);
+        }
+        if(link.includes('.htm')) {
+            link = link.substring(0, link.length - 4);
+        }
+        return link;
+    }
+
     renderLinks() {
         let links =  this.props.post_links.map((post_link, index) => {
             return (
@@ -26,11 +45,14 @@ class Post extends Component {
 
                     </div>
                     <div className="post-link__link">
-                        <a href={post_link.link_url}>Useful Link #{index + 1}</a>
+                        <a href={post_link.link_url}>{this.getNameForPostLink(post_link.link_url)}</a>
                     </div>
             </div>
             )
         })
+        if(links == 0) {
+            return <div className="no-content">No Post Links</div>
+        }
         return links;
     }
 
@@ -48,16 +70,16 @@ class Post extends Component {
             )
         } else if(this.props.type == 'result') {
             return (
-                <li className="result-post">
+                <li className="result-post"
+                    onMouseEnter={() => this.setState({height:70})}
+                    onMouseLeave={() => this.setState({height: 0})}
+                >
                     <div className="result-post-topics">
                         {this.renderTopics()}
                     </div>
 
                     <div className="result-post-title">
-                        <a href={this.props.url_for_post}
-                        onMouseEnter={() => this.setState({height:70})}
-                        onMouseLeave={() => this.setState({height: 0})}
-                        >
+                        <a href={this.props.url_for_post}>
                             {this.props.title}</a>
                     </div>
 

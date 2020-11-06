@@ -13,14 +13,13 @@
             border: 0px solid transparent;
             border-radius: 5px;
     
-            height: 118px;
-            font-size: 40px;
-    
             transition: all .2s ease;
             
     
             &::placeholder {
                 color: #B3B3B3;
+                font-family: 'Font Awesome\ 5 free', 'Lato', Arial, Helvetica, sans-serif;
+                font-weight: 600;
             }
     
             &:focus {
@@ -35,6 +34,31 @@
             color: #b3b3b3;
         }
     }
+    }
+
+    .search-bar__home {
+        align-content: center;
+        justify-items: center;
+    
+        input {
+            height: 118px;
+            font-size: 40px;
+
+            @media screen and (max-width: 600px) {
+                font-size: 23px;
+                height: 59px;
+            }
+        }
+    }
+    
+    .search-bar__results {
+        align-content: start;
+        justify-items: center;
+    
+        input {
+            font-size: 22px;
+            height: 36px;
+        }
     }
 
     
